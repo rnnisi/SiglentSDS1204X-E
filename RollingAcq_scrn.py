@@ -9,7 +9,11 @@ import subprocess
 import ExtractWfm
 #port = 5025
 
-# set up scope
+""" 
+Establish connection with scope 
+"""
+
+# set up 
 sig = sig.SDS1204XE()
 sig.checkargs(3)
 out, exp = sig.ConfigOutput()
@@ -28,6 +32,8 @@ st = sig.StartLog(dir, xdiv, ydiv)
 i = 0	# count total trigger checks 
 n = 0	# count number of waveforms collected
 dat = open(out, 'w+')
+
+# check and reset trigger 
 while time.perf_counter() - float(st) < float(rt):
 	i = i + 1
 	sig.PressSingle()
@@ -51,10 +57,15 @@ while time.perf_counter() - float(st) < float(rt):
 sig.QuitDriver()
 sig.EndLog(st, n, i)
 
+"""
+Extract waveform from csv
+"""
+# configure
 path = './' + str(dir) 
 ls = subprocess.check_output(['ls ' + path], shell = True)
 ScreenShots = ls.split(b'\n')
 
+# run extraction on each png to collect csv
 for i in ScreenShots[:len(ScreenShots) -1]:
 	print('i: ', i)
 	fn = path + '/' + str(i)[2:len(i) -1]
