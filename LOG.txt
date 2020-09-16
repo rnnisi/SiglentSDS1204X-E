@@ -1,0 +1,15 @@
+Log Experiments here
+
+
+
+Exp_50:  DateTime = Wed Sep 16 11:33:25 2020, TimeDiv = 2.00E-03, VoltDiv = 5.00E-01, 
+Exp_51:  DateTime = Wed Sep 16 11:37:22 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, 
+Exp_52:  DateTime = Wed Sep 16 11:38:27 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, 
+
+Exp_53:  DateTime = Wed Sep 16 11:41:51 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, 
+Exp_54:  DateTime = Wed Sep 16 11:42:41 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, 
+Exp_55:  DateTime = Wed Sep 16 11:43:26 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, RunTime = 10.370975417, WfmCollected = 4
+
+Exp_56:  DateTime = Wed Sep 16 11:48:32 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, RunTime = 13.006986494999998, WfmCollected = 3
+
+Exp_57:  DateTime = Wed Sep 16 11:50:23 2020, TimeDiv = 5.00E-04, VoltDiv = 5.00E-01, RunTime = 120.92921778500002, WfmCollected = 43, Checks = 84
