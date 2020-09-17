@@ -6,7 +6,7 @@ import sys
 import PIL
 import numpy as np
 from PIL import Image
-import matplotlib.pyplot as plt
+
 
 def open_png(path):
 	img = Image.open(path)
