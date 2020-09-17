@@ -43,6 +43,9 @@ Data acqusition and automatic generation of csv's. Expects three arguements: ./R
 ### LOG.txt
 Each run will be recorded in this log with a time stamp, run time, number of trigger checks, number of waveforms collected.
 
+### plot.py
+Plots waveform csv. Takes n (as in ScreenDump_n.csv) as arguement. Use in Exp_N directory. 
+
 ## Outputs 
 ### Trigger Checks: Exp_n.txt
 This file has one line for each trigger check. If the scope is triggered, the line will start with "TRIGGERED", followed by 'i', which is the iteration, and then time, which is the time of check. t = 0 is initialization
