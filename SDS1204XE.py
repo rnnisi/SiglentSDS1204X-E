@@ -243,7 +243,7 @@ class SDS1204XE:
 		while time.perf_counter() - float(st) < float(rt):
 			i = i + 1
 			self.PressSingle()
-			time.sleep(0.25)
+			time.sleep(0.35)
 			try:
 				stat = self.CheckTriggerButton()
 				if stat == 'STOP':
