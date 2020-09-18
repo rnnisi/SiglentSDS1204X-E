@@ -23,6 +23,7 @@ sig.SocketCmd(b'C1:TRLV 1.5V')
 sig.SocketClose()
 xdiv, x_units = sig.TimeDivs()
 ydiv, y_units = sig.VoltDivs()
+print("Talking to scope...\,')
 try:
 	xdiv = float(xdiv)
 	ydiv = float(ydiv)
@@ -31,15 +32,16 @@ except ValueError:
 	sys.exit(0)
 
 print("time div: ", xdiv, x_units, "volt div:", ydiv, y_units)
+print("Initializing experiment..."\n)
 st = sig.StartLog(dir, xdiv, ydiv)
 i, n = sig.Collect(st, rt, out)
 sig.QuitDriver()
 sig.EndLog(st, n, i)
-
+print("Concluding DAQ...")
 path = './' + str(dir) 
 ls = subprocess.check_output(['ls ' + path], shell = True)
 ScreenShots = ls.split(b'\n')
-
+print("Generating CSV's...\n")
 for i in ScreenShots[:len(ScreenShots) -1]:
 	fn = path + '/' + str(i)[2:len(i) -1]
 	png = ExtractWfm.open_png(fn + 'png')
