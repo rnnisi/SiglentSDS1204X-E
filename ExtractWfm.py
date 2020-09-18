@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-# Rebecca Nishide, 09/11/2020
-#
-
 import sys
 import PIL
 import numpy as np
