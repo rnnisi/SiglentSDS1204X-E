@@ -1,6 +1,6 @@
 # SiglentSDS1204X-E
 
-## purpose
+## Purpose
 
 Pull waveforms from Siglent scope by taking advantage of online feature, to circumvent need for VISA front and backends.
 
@@ -34,6 +34,78 @@ This is a python3 program.
 ### SDS1204XE.py
 library for acqusition of waveform screenshots, configuration of scope, acqusition of initial conditions, trigger control.
 
+**ReadFile(infile):** read lines of a file
+
+**checkargs():** exit program if correct number of command line arguements is not given, return arguements
+
+**getArgs():** extract IP and run time from command line arguements
+- output is list: [<IP>, <RunTime>]
+  
+**checkdir():** check existing directories to assign sequential experiment numbers
+
+**ConfigOutput():** run checkdir
+- return list: [<out file>, <experiment number>]
+  
+**mkdir():** Setup configurations for experiment and make experimental directory
+- output is name of directory 
+
+**StartLog(dir, xdiv, ydiv):** Log experiment, initial
+
+**EndLog(StartTime, n, i):** Finish logging experiment 
+- n is number of waveforms collected 
+- i is number of times trigger was checked
+
+**SocketConnect(IP, port):** make socket to interface with scope
+
+**SocketClose():** close socket
+
+**SocketQuery(cmd):** send query to socket, get reply
+- return reply to query
+
+**TrigStat():** check status of trigger over socket
+- return reply to trigger status query, recieved over socket
+
+**TimeDivs():** check time divisions
+- return time divs, time div units
+
+**VoltDivs():** check volt divisions
+- return voltdivs, volt div units
+
+**GoToInstrWebPage(IP):** open chrome to web interface page
+
+**Button_WfmBin():** locate button that saves binary waveform
+
+**Button_RunStop()**: Find Run/Stop Button
+
+**Button_SidePanel():** Find side panel button 
+
+**Button_Single():** Find Single trigger button
+
+**Button_ScreenSave():** Find screensave button
+
+**OpenSidePanel():** press button to open side panel
+
+**FindAllButtons():** locate all the buttons you will need for the rest of the program
+
+**PressSingle():** Press button to reset in single trigger mode
+
+**CheckTriggerButton():** Check the color of the Run/Stop button, triggered if red. 
+- return 'STOP' if red
+- return 'RUN' if green
+
+**GetBinWf():** download binary waveform (takes about 10s)
+
+**ScreenGrab(i):** save screenshot of driver with waveform as png numbered by iteration
+
+**GetBMP():** save screendump of waveform using built in feature on web interface
+
+**QuitDriver():** quit chromedriver
+
+**Collect(st, rt, df):** Collect screenshots of driver 
+- will check trigger at rate of about 10 Hz.
+  - if triggered, will collect screenshot and then reset trigger
+  - if not triggered, record check and loop again 
+- will go until run time is expired
 ### ExtractWfm.py 
 generates CSV from screenshot of scope face
 
