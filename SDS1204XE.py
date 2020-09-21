@@ -240,10 +240,10 @@ class SDS1204XE:
 		i = 0
 		n = 0
 		dat = open(df, 'w+')
+		self.PressSingle()
+		time.sleep(0.37)
 		while time.perf_counter() - float(st) < float(rt):
 			i = i + 1
-			self.PressSingle()
-			time.sleep(0.37)
 			try:
 				stat = self.CheckTriggerButton()
 				if stat == 'STOP':
@@ -252,6 +252,8 @@ class SDS1204XE:
 					print("getting waveform")
 					dat.write("TRIGGERED, i = " + str(i) + ", time = " + str(time.perf_counter() - st) + '\n')
 					time.sleep(0.1)
+					self.PressSingle()
+					time.sleep(0.35)
 				else:
 					print(stat)
 					dat.write("i = "+ str(i) + ", time = " + str(time.perf_counter() - st) + '\n')
