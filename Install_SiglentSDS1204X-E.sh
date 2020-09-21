@@ -16,7 +16,7 @@ echo "python3 requirement satisfied"
 # get libraries 
 sudo pip3 install selenium
 sudo pip3 install numpy
-sudo pip3 install PIL
+sudo pip3 install Pillow
 
 # clone from github with https 
 # need to request access from me to use. 
