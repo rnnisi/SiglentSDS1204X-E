@@ -133,11 +133,13 @@ This file contains functions necessary to extract the Channel 1 waveform from a 
 **plt_black(img):** return list of black pixels  (for test purposes)
 
 **cleanup(img, t, v):** average values to give single valued function 
-- takes the image, x, and y pixels from the waveform as inputs
+- takes the image, x, and y pixels from the waveform as inputs. t, v is x, y pixels. t, v should be output of get_wfm. 
 - averages all the voltage values collected for each time value so that cleaned up waveform is returned 
 - returns time, volt arrays with matching indexes
 
 **GetDat(xdiv, ydiv, time, volts):** convert the pixel values to voltage and time values by going from pixels to scope devisions. output is x, y arrays which have been scaled properly to x, y div value (get units from SDS1204XE.py)
+- xdiv, ydiv are the numerical values for time, voltages per division (50 p) on the scope window. Take note of units, but this function does not take units into account. 
+- time, voltages should be the arrays which were outputs from cleanup(img, t, v)
 
 ### RollingAcq_scrn.py
 Data acqusition and automatic generation of csv's. Expects three arguements: ./RillingAcq_scrn.py [IP of scope] [Acq time in seconds]
