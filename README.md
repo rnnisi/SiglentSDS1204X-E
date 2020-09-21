@@ -13,6 +13,8 @@ Once acquisiton is done, CSV's of the waveforms can be generated using the acqui
 ### Device Requirements
 Program is meant to be run on Mac OS. Scope needs to be powered on and connected to localhost. Mac device nees to be connected to localhost. 
 
+This program only reads data from CH1. The view on the scope must be set to channel 1, so that the whole ch1 waveform is visible. 
+
 On the scope, Utility -> I/O --> IP Set --> DHCP needs to be on. 
 
 This is a python3 program.
