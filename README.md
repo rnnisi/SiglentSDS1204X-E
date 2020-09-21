@@ -40,7 +40,8 @@ To run: ./RollingAcq_scrn.py <IP> <RunTime>
 
 ## Contents
 ### SDS1204XE.py
-library for acqusition of waveform screenshots, configuration of scope, acqusition of initial conditions, trigger control.
+Library for acqusition of waveform screenshots, configuration of scope, acqusition of initial conditions, trigger control.
+Class format. 
 
 **ReadFile(infile):** read lines of a file
 
@@ -115,7 +116,28 @@ library for acqusition of waveform screenshots, configuration of scope, acqusiti
   - if not triggered, record check and loop again 
 - will go until run time is expired
 ### ExtractWfm.py 
-generates CSV from screenshot of scope face
+
+This file contains functions necessary to extract the Channel 1 waveform from a screenshot of the net interface to generate a csv. It assumes that each div is 50 pixels wide, which works for the Macbook Air I developed it on. It is easy to check if this is the same on other devices 
+
+**open_png(path):** open image with described path in PIL library for use
+
+**get_pixel(img, i, j):** get the rgb value of the pixel at i, j in img
+- return True if the value indicates it is on the waveform displayed for ch1
+- return False if the rgb does not match the ch1 waveform value
+
+**get_black(img, i, j):** test function that picks out all the black pixels
+
+**get_wfm(img):** check every pixel in img
+- return indexed list of x, y values which represent pixels on the waveform (rgb matches the yellow color that the scope displayes ch1 in)
+
+**plt_black(img):** return list of black pixels  (for test purposes)
+
+**cleanup(img, t, v):** average values to give single valued function 
+- takes the image, x, and y pixels from the waveform as inputs
+- averages all the voltage values collected for each time value so that cleaned up waveform is returned 
+- returns time, volt arrays with matching indexes
+
+**GetDat(xdiv, ydiv, time, volts):** convert the pixel values to voltage and time values by going from pixels to scope devisions. output is x, y arrays which have been scaled properly to x, y div value (get units from SDS1204XE.py)
 
 ### RollingAcq_scrn.py
 Data acqusition and automatic generation of csv's. Expects three arguements: ./RillingAcq_scrn.py [IP of scope] [Acq time in seconds]
