@@ -48,7 +48,7 @@ Class format.
 **checkargs():** exit program if correct number of command line arguements is not given, return arguements
 
 **getArgs():** extract IP and run time from command line arguements
-- output is list: [<IP>, <RunTime>]
+- output is list: \[<IP>, <RunTime>\]
   
 **checkdir():** check existing directories to assign sequential experiment numbers
 
