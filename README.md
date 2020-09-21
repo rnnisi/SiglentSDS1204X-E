@@ -53,8 +53,8 @@ Class format.
 **checkdir():** check existing directories to assign sequential experiment numbers
 
 **ConfigOutput():** run checkdir
-- return list: <out file>, <experiment number>
-  
+- return list: [\<out file\>, \<experiment number\>]
+
 **mkdir():** Setup configurations for experiment and make experimental directory
 - output is name of directory 
 
@@ -142,7 +142,7 @@ This file contains functions necessary to extract the Channel 1 waveform from a 
 - time, voltages should be the arrays which were outputs from cleanup(img, t, v)
 
 ### RollingAcq_scrn.py
-Data acqusition and automatic generation of csv's. Expects three arguements: ./RillingAcq_scrn.py [IP of scope] [Acq time in seconds]
+Data acqusition and automatic generation of csv's. Expects three arguements: ./RillingAcq_scrn.py <IP of scope> <Acq time in seconds>
 
 ### LOG.txt
 Each run will be recorded in this log with a time stamp, run time, number of trigger checks, number of waveforms collected.
