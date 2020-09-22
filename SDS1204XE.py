@@ -32,7 +32,8 @@ class SDS1204XE:
 	def getArgs(self):
 		self.IP = self.args[1]
 		self.rt = self.args[2]
-		return self.IP, self.rt
+		self.trig = self.args[3]
+		return self.IP, self.rt, self.trig
 	def checkdir(self,f,ff):       # check names of files with name f, number output files to avoid overwriting
 		i = 2				# format for f should be : NAME_n.txt with n = 1, 2, 3.....
 		if os.path.exists(f) == False:
@@ -121,6 +122,8 @@ class SDS1204XE:
 		except ConnectionResetError:
 			self.SocketConnect(self.IP, self.port)
 		self.SocketClose()
+	def SetTrig(selfSetT):
+		self.SocketCmd(eval("b'C1:TRLV ' + str(self.trig))
 	def TrigStat(self):
 		try:
 			self.SocketConnect(self.IP, self.port)
