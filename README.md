@@ -24,8 +24,7 @@ Message me with a public key for cloning. Once given access, running "Installati
 Once the zip resulting from cloning, it will open a directory. In that directory, run "config_chromedriver.sh" to add chromedriver to path so that selenium may use it. The zip for Chrome 84 on MacOS is inlcuded in the repo. For different versions of chrome, remove the included zip and replace with the driver for the appropriate version. The configuration shell script will unzip any version, and add the driver to "/usr/local/bin", which should already be on $PATH. Restart shell, and then the repo should be ready for use. 
 
 To run: ./RollingAcq_scrn.py <IP> <RunTime> <trigger> 
-Trigger should be inputted with no spaces, with number followed by units. eg : 1.5V
-
+Trigger should be inputted with no spaces, with number followed by units (V, mV, uV). eg : 1.5V
 
   
 ### Python libraries 
@@ -81,9 +80,12 @@ Class format.
 
 **TimeDivs():** check time divisions
 - return time divs, time div units
+- time divs will be in scientific format, recognized by python 
+- units are: ns, us, ns,s
 
 **VoltDivs():** check volt divisions
 - return voltdivs, volt div units
+- Volt divs are in V, mV, or uV. V is default
 
 **GoToInstrWebPage(IP):** open chrome to web interface page
 
