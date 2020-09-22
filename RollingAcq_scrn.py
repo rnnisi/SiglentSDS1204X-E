@@ -11,9 +11,9 @@ import ExtractWfm
 
 # set up scope
 sig = sig.SDS1204XE()
-sig.checkargs(4)
+sig.checkargs(4) # check that right number of arguements are given 
 out, exp = sig.ConfigOutput()
-IP, rt, trig = sig.getArgs()	# assign IP as given arguement 
+IP, rt, trig = sig.getArgs()
 dir = sig.mkdir()	# make a directory for results
 sig.GoToInstrWebPage(IP)	# open driver to scope online interface
 sig.FindAllButtons()	# identify the buttons we will need
@@ -23,7 +23,7 @@ sig.SetTrig()	# set trigger level
 sig.SocketClose()
 xdiv, x_units = sig.TimeDivs()
 ydiv, y_units = sig.VoltDivs()
-print("Talking to scope...\n")
+print("\nTalking to scope...\n")
 try:
 	xdiv = float(xdiv)
 	ydiv = float(ydiv)
@@ -32,16 +32,16 @@ except ValueError:
 	sys.exit(0)
 
 print("time div: ", xdiv, x_units, "volt div:", ydiv, y_units)
-print("Initializing experiment...\n")
+print("\nInitializing experiment...\n")
 st = sig.StartLog(dir, xdiv, ydiv)
 i, n = sig.Collect(st, rt, out)
 sig.QuitDriver()
 sig.EndLog(st, n, i)
-print("Concluding DAQ...")
+print("\nConcluding DAQ...")
 path = './' + str(dir) 
 ls = subprocess.check_output(['ls ' + path], shell = True)
 ScreenShots = ls.split(b'\n')
-print("Generating CSV's...\n")
+print("\nGenerating CSV's...\n")
 for i in ScreenShots[:len(ScreenShots) -1]:
 	fn = path + '/' + str(i)[2:len(i) -1]
 	png = ExtractWfm.open_png(fn + 'png')
@@ -53,3 +53,4 @@ for i in ScreenShots[:len(ScreenShots) -1]:
 	for k, j in zip(x, y):
 		csv.write(str(k) + ', ' + str(j)+ '\n')
 	csv.close()
+	print("CSV " + fn + "written.\n")
