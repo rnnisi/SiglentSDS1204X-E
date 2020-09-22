@@ -19,11 +19,14 @@ On the scope, Utility -> I/O --> IP Set --> DHCP needs to be on.
 
 This is a python3 program.
 ### Installation 
-Message me with a public key for cloning. Once given access, running "Installation.sh" from the command line of a Mac terminal will check the system, get the appropriate libraries, and clone the SiglentSDS1204x-E repository. 
+Message me with a public key for cloning. Once given access, running "Installation.sh" from the command line of a Mac terminal will check the system, get the appropriate libraries, and clone the SiglentSDS1204x-E repository. \
 
-Once the zip resulting from cloning, it will open a directory. In that directory, run "config_chromedriver.sh" to add chromedriver to path so that selenium may use it. The zip for Chrome 84 on MacOS is inlcuded in the repo. For different versions of chrome, remove the included zip and replace with the driver for the appropriate version. The configuration shell script will unzip any version, and add the driver to "/usr/local/bin", which should already be on $PATH. Restart shell, and then the repo should be ready for use. 
+Once the zip resulting from cloning, it will open a directory. In that directory, run "config_chromedriver.sh" to add chromedriver to path so that selenium may use it. The zip for Chrome 84 on MacOS is inlcuded in the repo. For different versions of chrome, remove the included zip and replace with the driver for the appropriate version. The configuration shell script will unzip any version, and add the driver to "/usr/local/bin", which should already be on $PATH. Restart shell, and then the repo should be ready for use. \
 
-To run: ./RollingAcq_scrn.py <IP> <RunTime>
+To run: ./RollingAcq_scrn.py <IP> <RunTime> <trigger> \
+Trigger should be inputted with no spaces, with number followed by units. eg : 1.5V
+
+
   
 ### Python libraries 
 - time 
@@ -48,7 +51,7 @@ Class format.
 **checkargs():** exit program if correct number of command line arguements is not given, return arguements
 
 **getArgs():** extract IP and run time from command line arguements
-- output is list: [\<IP\>, \<RunTime\>]
+- output is list: [\<IP\>, \<RunTime\>, <\trigger set\>]
   
 **checkdir():** check existing directories to assign sequential experiment numbers
 
