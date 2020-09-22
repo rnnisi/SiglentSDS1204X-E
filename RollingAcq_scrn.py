@@ -11,15 +11,15 @@ import ExtractWfm
 
 # set up scope
 sig = sig.SDS1204XE()
-sig.checkargs(3)
+sig.checkargs(4)
 out, exp = sig.ConfigOutput()
 IP, rt = sig.getArgs()	# assign IP as given arguement 
 dir = sig.mkdir()	# make a directory for results
-sig.GoToInstrWebPage(IP)	
-sig.FindAllButtons()
-sig.OpenSidePanel()
-sig.SocketCmd(b'TRMD AUTO')
-sig.SocketCmd(b'C1:TRLV 1.5V')
+sig.GoToInstrWebPage(IP)	# open driver to scope online interface
+sig.FindAllButtons()	# identify the buttons we will need
+sig.OpenSidePanel()	# open side panel that has all the options
+sig.SocketCmd(b'TRMD AUTO')	# set to auto over sicket
+sig.SetTrig()	# set trigger level
 sig.SocketClose()
 xdiv, x_units = sig.TimeDivs()
 ydiv, y_units = sig.VoltDivs()
